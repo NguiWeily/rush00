@@ -219,3 +219,306 @@ Certainly! Let's go through each case and see the expected output.
 These are the expected results for the given test cases. Running the compiled program should produce the corresponding output.
 
 That's a detailed explanation of each file and its contents. Remember to save each file with its respective name in the `ex00/` directory and use the provided compilation command to compile and run the program.
+Please modify your program to use program arguments to test your function with result below, 
+Rush 00
+• rush(5,3) should display:
+$>./a.out
+o---o
+| |
+o---o
+$>
+• rush(5, 1) should display:
+$>./a.out
+o---o
+$>
+• rush(1, 1) should display:
+$>./a.out
+o
+$>
+• rush(1, 5) should display:
+$>./a.out
+o
+|
+|
+|
+o
+$>
+Rush 01
+• rush(5,3) should display :
+$>./a.out
+/***\
+* *
+\***/
+$>
+• rush(5, 1) should display:
+$>./a.out
+/***\
+$>
+• rush(1, 1) should display:
+$>./a.out
+/
+$>
+• rush(1, 5) should display:
+$>./a.out
+/
+*
+*
+*
+\
+$>
+• rush(4, 4) should display:
+$>./a.out
+/**\
+* *
+* *
+\**/
+$>
+Rush 02
+• rush(5,3) should display :
+$>./a.out
+ABBBA
+B B
+CBBBC
+$>
+• rush(5, 1) should display:
+$>./a.out
+ABBBA
+$>
+• rush(1, 1) should display:
+$>./a.out
+A
+$>
+• rush(1, 5) should display:
+$>./a.out
+A
+B
+B
+B
+C
+$>
+• rush(4, 4) should display:
+$>./a.out
+ABBA
+B B
+B B
+CBBC
+$>
+Rush 03
+• rush(5,3) should display :
+$>./a.out
+ABBBC
+B B
+ABBBC
+$>
+• rush(5, 1) should display:
+$>./a.out
+ABBBC
+$>
+• rush(1, 1) should display:
+$>./a.out
+A
+$>
+• rush(1, 5) should display:
+$>./a.out
+A
+B
+B
+B
+A
+$>
+• rush(4, 4) should display:
+$>./a.out
+ABBC
+B B
+B B
+ABBC
+$>
+Rush 04
+• rush(5,3) should display :
+$>./a.out
+ABBBC
+B B
+CBBBA
+$>
+• rush(5, 1) should display:
+$>./a.out
+ABBBC
+$>
+• rush(1, 1) should display:
+$>./a.out
+A
+$>
+• rush(1, 5) should display:
+$>./a.out
+A
+B
+B
+B
+C
+$>
+• rush(4, 4) should display:
+$>./a.out
+ABBC
+B B
+B B
+CBBA
+$>
+Certainly! Here's the modified code that runs `rush00(5, 3)` if no command-line arguments are provided:
+
+```c
+#include <unistd.h>
+#include <stdlib.h>
+
+void ft_putchar(char c)
+{
+    write(1, &c, 1);
+}
+
+void print_line(int width, char first, char middle, char last)
+{
+    int i;
+
+    ft_putchar(first);
+    i = 1;
+    while (i < width - 1)
+    {
+        ft_putchar(middle);
+        i++;
+    }
+    if (width > 1)
+        ft_putchar(last);
+    ft_putchar('\n');
+}
+
+void rush00(int x, int y)
+{
+    int i;
+
+    if (x <= 0 || y <= 0)
+        return;
+
+    print_line(x, 'o', '-', 'o');
+    i = 1;
+    while (i < y - 1)
+    {
+        print_line(x, '|', ' ', '|');
+        i++;
+    }
+    if (y > 1)
+        print_line(x, 'o', '-', 'o');
+}
+
+void rush01(int x, int y)
+{
+    int i;
+
+    if (x <= 0 || y <= 0)
+        return;
+
+    print_line(x, '/', '*', '\\');
+    i = 1;
+    while (i < y - 1)
+    {
+        print_line(x, '*', ' ', '*');
+        i++;
+    }
+    if (y > 1)
+        print_line(x, '\\', '*', '/');
+}
+
+void rush02(int x, int y)
+{
+    int i;
+
+    if (x <= 0 || y <= 0)
+        return;
+
+    print_line(x, 'A', 'B', 'A');
+    i = 1;
+    while (i < y - 1)
+    {
+        print_line(x, 'B', ' ', 'B');
+        i++;
+    }
+    if (y > 1)
+        print_line(x, 'C', 'B', 'C');
+}
+
+void rush03(int x, int y)
+{
+    int i;
+
+    if (x <= 0 || y <= 0)
+        return;
+
+    print_line(x, 'A', 'B', 'B');
+    i = 1;
+    while (i < y - 1)
+    {
+        print_line(x, 'B', ' ', 'B');
+        i++;
+    }
+    if (y > 1)
+        print_line(x, 'A', 'B', 'B');
+}
+
+void rush04(int x, int y)
+{
+    int i;
+
+    if (x <= 0 || y <= 0)
+        return;
+
+    print_line(x, 'A', 'B', 'B');
+    i = 1;
+    while (i < y - 1)
+    {
+        print_line(x, 'B', ' ', 'B');
+        i++;
+    }
+    if (y > 1)
+        print_line(x, 'C', 'B', 'A');
+}
+
+int main(int argc, char *argv[])
+{
+    int rushNum = 0;
+    int x = 5;
+    int y = 3;
+
+    if (argc >= 4)
+    {
+        rushNum = atoi(argv[1]);
+        x = atoi(argv[2]);
+        y = atoi(argv[3]);
+    }
+
+    switch (rushNum)
+    {
+    case 0:
+        rush00(x, y);
+        break;
+    case 1:
+        rush01(x, y);
+        break;
+    case 2:
+        rush02(x, y);
+        break;
+    case 3:
+        rush03(x, y);
+        break;
+    case
+
+ 4:
+        rush04(x, y);
+        break;
+    default:
+        ft_putchar('\n');
+        break;
+    }
+
+    return 0;
+}
+```
+
+In this modified code, if no command-line arguments are provided, the default values for `rushNum`, `x`, and `y` are set to `0`, `5`, and `3` respectively. These default values are used to execute `rush00(5, 3)`. If command-line arguments are provided, the values are parsed and used accordingly.
