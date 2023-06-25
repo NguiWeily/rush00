@@ -137,3 +137,25 @@ gcc -Wall -Wextra -Werror main.c ft_putchar.c rush00.c && ./a.out
 ```
 
 The output should match the examples provided in the exercise.
+Certainly! Let's go through each file and its purpose step by step.
+
+**main.c:**
+The `main.c` file contains the `main` function, which serves as the entry point of the program. In this case, it simply calls the `rush` function with arguments `5` and `5`. You can modify these arguments to test different rectangle dimensions.
+
+**ft_putchar.c:**
+The `ft_putchar.c` file includes the definition of the `ft_putchar` function. This function is responsible for outputting a single character to the standard output. In this implementation, it uses the `write` system call from the `<unistd.h>` library to achieve this. The `write` function takes three arguments: the file descriptor (in this case, `1` for standard output), a pointer to the character to be written, and the number of bytes to write (which is `1` in this case, as we're writing a single character).
+
+**rush00.c:**
+The `rush00.c` file contains the implementation of the `rush` function, which is responsible for generating the rectangle pattern based on the provided width and height.
+
+- `void print_line(int width, char first, char middle, char last)`: This helper function is defined to print a single line of the rectangle. It takes four arguments: `width` (the width of the line), `first` (the character representing the first position), `middle` (the character representing the middle positions), and `last` (the character representing the last position). The function iterates `width` - 1 times, printing the `middle` character, and then prints the `last` character if `width` is greater than 1. Finally, it prints a newline character to move to the next line.
+
+- `void rush(int x, int y)`: This is the main function that generates the rectangle. It takes two arguments: `x` (the width) and `y` (the height). Inside the function, it first checks if either `x` or `y` is less than or equal to 0. If either dimension is invalid, the function simply returns without doing anything.
+
+  Next, it calls `print_line` to print the top line of the rectangle, with `'o'` as the `first` character, `'-'` as the `middle` character, and `'o'` as the `last` character.
+
+  Then, it enters a loop that iterates `y - 2` times (excluding the first and last lines). In each iteration, it calls `print_line` to print a line with `'|'` as the `first` character, `' '` as the `middle` character, and `'|'` as the `last` character.
+
+  Finally, if the height `y` is greater than 1, it calls `print_line` to print the bottom line of the rectangle, using the same characters as the top line.
+
+That's a detailed explanation of each file and its contents. Remember to save each file with its respective name in the `ex00/` directory and use the provided compilation command to compile and run the program.
