@@ -157,5 +157,65 @@ The `rush00.c` file contains the implementation of the `rush` function, which is
   Then, it enters a loop that iterates `y - 2` times (excluding the first and last lines). In each iteration, it calls `print_line` to print a line with `'|'` as the `first` character, `' '` as the `middle` character, and `'|'` as the `last` character.
 
   Finally, if the height `y` is greater than 1, it calls `print_line` to print the bottom line of the rectangle, using the same characters as the top line.
+Certainly! Let's go through each case and see the expected output.
+
+1. `rush(5, 3)`
+   The function call `rush(5, 3)` generates a rectangle with a width of 5 and a height of 3.
+
+   The expected output:
+   ```
+   $> ./a.out
+   o---o
+   |   |
+   o---o
+   ```
+
+   Explanation:
+   The top line of the rectangle consists of the characters `'o'`, `'-'`, `'-'`, `'-'`, and `'o'`. The middle line is made up of the characters `'|'`, `' '`, `' '`, `' '`, and `'|'`. The bottom line is the same as the top line. The spaces represent the empty area inside the rectangle.
+
+2. `rush(5, 1)`
+   The function call `rush(5, 1)` generates a rectangle with a width of 5 and a height of 1.
+
+   The expected output:
+   ```
+   $> ./a.out
+   o---o
+   ```
+
+   Explanation:
+   Since the height is 1, there is only a single line in the rectangle, which is the top line.
+
+3. `rush(1, 5)`
+   The function call `rush(1, 5)` generates a rectangle with a width of 1 and a height of 5.
+
+   The expected output:
+   ```
+   $> ./a.out
+   o
+   |
+   |
+   |
+   o
+   ```
+
+   Explanation:
+   The rectangle consists of two vertical lines made of the characters `'o'` and `'|'`. The empty area is represented by spaces.
+
+4. `rush(4, 4)`
+   The function call `rush(4, 4)` generates a rectangle with a width of 4 and a height of 4.
+
+   The expected output:
+   ```
+   $> ./a.out
+   o--o
+   |  |
+   |  |
+   o--o
+   ```
+
+   Explanation:
+   The top and bottom lines of the rectangle are made up of the characters `'o'`, `'-'`, `'-'`, and `'o'`. The middle two lines consist of the characters `'|'`, `' '`, `' '`, and `'|'`. The spaces represent the empty area inside the rectangle.
+
+These are the expected results for the given test cases. Running the compiled program should produce the corresponding output.
 
 That's a detailed explanation of each file and its contents. Remember to save each file with its respective name in the `ex00/` directory and use the provided compilation command to compile and run the program.
